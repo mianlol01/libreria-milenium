@@ -20,7 +20,7 @@ public class RBoleta implements IBoleta {
 
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "select substr(max(boleta_id),2) from Boleta";
+			String sql = "select substr(max(id_boleta),2) from Boleta";
 
 			pst = con.prepareStatement(sql);
 			rs = pst.executeQuery();
@@ -49,12 +49,11 @@ public class RBoleta implements IBoleta {
 		PreparedStatement pst = null;
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "insert into Boleta (id_boleta, id_cliente, total, fecha_boleta) values (?,?,?,?)";
+			String sql = "insert into Boleta (id_boleta, id_cliente, total) values (?,?,?)";
 			pst = con.prepareStatement(sql);
 			pst.setString(1, b.getId_boleta());
 			pst.setString(2, b.getId_cliente());
 			pst.setDouble(3, b.getTotal());
-			pst.setString(4, b.getFecha_boleta());
 			ok = pst.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("Error en registrar Boleta: " + e.getMessage());

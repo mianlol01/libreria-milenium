@@ -9,7 +9,7 @@ import com.milenium.repository.REmpleado;
 
 public class Demo {
 	public static void main(String[] args) {
-		actualizarEmpleado();
+		registrarCliente();
 	}
 	public static void registrarCliente() {
 		RCliente rc = new RCliente();

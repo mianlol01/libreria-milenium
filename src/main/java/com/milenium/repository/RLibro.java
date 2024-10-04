@@ -271,15 +271,18 @@ public class RLibro implements ILibro {
 	}
 
 	@Override
-	public int actualizarStock(int id, int stock) {
+	public int actualizarStock(int id, int cantidad) {
 		int ok = 0;
 		Connection con = null;
 		PreparedStatement pst = null;
+		//Obtener libro
+		Libro l = obtenerLibro(id);
+		int nuevoStock = l.getStock() - cantidad;
 		try {
 			con = MySQLConexion.getConexion();
 			String sql = "UPDATE Libro SET stock = ? WHERE id_libro = ?;";
 			pst = con.prepareStatement(sql);
-			pst.setInt(1, stock);
+			pst.setInt(1, nuevoStock);
 			pst.setInt(2, id);
 			ok = pst.executeUpdate();
 		} catch (Exception e) {

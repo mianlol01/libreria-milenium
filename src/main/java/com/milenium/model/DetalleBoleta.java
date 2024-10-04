@@ -7,6 +7,16 @@ public class DetalleBoleta {
 	private int cantidad;
 	private double importe;
 
+	public DetalleBoleta() {
+		super();
+	}
+
+	public DetalleBoleta(int id_libro, int cantidad) {
+		super();
+		this.id_libro = id_libro;
+		this.cantidad = cantidad;
+	}
+
 	public int getId_detalle_boleta() {
 		return id_detalle_boleta;
 	}
