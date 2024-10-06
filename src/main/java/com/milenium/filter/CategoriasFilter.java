@@ -43,6 +43,7 @@ public class CategoriasFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		request.setAttribute("listaCategorias", listaCategorias);
+		System.out.println("este es el filter :)");
 		chain.doFilter(request, response);
 	}
 

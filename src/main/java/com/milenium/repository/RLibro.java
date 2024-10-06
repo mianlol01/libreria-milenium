@@ -145,6 +145,8 @@ public class RLibro implements ILibro {
 				l.setPrecio(rs.getDouble("precio"));
 				l.setStock(rs.getInt("stock"));
 				l.setDescuento(rs.getInt("descuento"));
+				l.setNombre_autor(rs.getString("nombre_autor"));
+				l.setNombre_categoria(rs.getString("nombre_categoria"));
 				lista.add(l);
 			}
 		} catch (Exception e) {
