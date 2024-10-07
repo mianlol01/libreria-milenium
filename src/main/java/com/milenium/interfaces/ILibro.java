@@ -24,4 +24,6 @@ public interface ILibro {
 	public int actualizarPrecioDescuento(int id, double price, int discount);
 
 	public int actualizarStock(int id, int stock);
+
+	public List<Libro> librosSimilares(int id);
 }

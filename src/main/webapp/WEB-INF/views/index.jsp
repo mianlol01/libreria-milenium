@@ -20,38 +20,7 @@
 	<jsp:include page="c-nav.jsp"></jsp:include>
 	<!-- Fin Navbar -->
 	<!-- Banner -->
-	<div class="full-width-div bg-primary text-white banner">
-		<div id="carouselExample" class="carousel slide"
-			data-bs-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active" data-bs-interval="4000">
-					<img
-						src="${pageContext.request.contextPath}/resources/images/banner01.png"
-						class="d-block w-100" alt="..." />
-				</div>
-				<div class="carousel-item" data-bs-interval="4000">
-					<img
-						src="${pageContext.request.contextPath}/resources/images/banner02.png"
-						class="d-block w-100" alt="..." />
-				</div>
-				<div class="carousel-item" data-bs-interval="4000">
-					<img
-						src="${pageContext.request.contextPath}/resources/images/banner03.png"
-						class="d-block w-100" alt="..." />
-				</div>
-			</div>
-			<button class="carousel-control-prev" type="button"
-				data-bs-target="#carouselExample" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button"
-				data-bs-target="#carouselExample" data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Next</span>
-			</button>
-		</div>
-	</div>
+	<jsp:include page="c-banner.jsp"></jsp:include>
 	<!--MAIN-->
 	<div class="container-sm main-container">
 		<div class="container-fluid text-center">
@@ -60,20 +29,21 @@
 		<div class="container-fluid main-grid">
 			<div class="container mt-5">
 				<ul class="article-grid">
+					<!-- Puedes agregar más artículos aquí -->
 					<c:forEach items="${listaDestacados}" var="destacado">
 						<!-- Puedes agregar más artículos aquí -->
 						<li class="card-custom">
 							<div class="portada">
 								<img
-									src="https://images.cdn1.buscalibre.com/fit-in/360x360/65/22/6522fbd45002dedf398aba22c041d4c6.jpg"
+									src="${pageContext.request.contextPath}/resources/images/${destacado.ruta()}.png"
 									alt="" /> <span class="descuento fs-6 font-monospace">-${destacado.descuento}%</span>
 							</div>
 							<div class="datos text-center">
 								<p class="fs-5 titulo">${destacado.titulo}</p>
 								<p class="fs-6 autor">${destacado.nombre_autor}</p>
 								<div class="price-container">
-									<p class="fs-6 font-monospace transparente">${destacado.precio()}</p>
-									<p class="fs-6 font-monospace">${destacado.descuento()}</p>
+									<p class="fs-6 font-monospace transparente">S/${destacado.precio()}</p>
+									<p class="fs-6 font-monospace">S/${destacado.descuento()}</p>
 								</div>
 							</div>
 							<form class="btn-container">
@@ -87,15 +57,7 @@
 		</div>
 	</div>
 	<!--FIN MAIN-->
-	<!--FOOTER-->
-	<div class="container-fluid footer-container text-center">
-		<h5 class="footer-titulo">Special title treatment</h5>
-		<p class="footer-p">With supporting text below as a natural
-			lead-in to additional content.</p>
-		<p class="footer-p">2024 © Librería MILENIUM. Todos los Derechos
-			Reservados</p>
-	</div>
-	<!--FIN FOOTER-->
+	<jsp:include page="c-footer.jsp"></jsp:include>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

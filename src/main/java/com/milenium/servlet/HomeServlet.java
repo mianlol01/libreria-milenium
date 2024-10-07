@@ -1,4 +1,4 @@
-package com.milenium;
+package com.milenium.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,7 +16,7 @@ import com.milenium.repository.RLibro;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet(name = "home", urlPatterns = { "/home" , "/"})
+@WebServlet(name = "home", urlPatterns = { "/home" , "/", "/index", "/inicio"})
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

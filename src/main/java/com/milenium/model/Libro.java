@@ -15,11 +15,15 @@ public class Libro {
 	private String nombre_categoria;
 
 	public double precioFinal() {
-		return precio - (precio * descuento / 100);
+		return this.precio - (this.precio * this.descuento / 100);
 	}
 
 	public String precio() {
 		return String.format("%.2f", precio);
+	}
+
+	public String ruta() {
+		return String.format("l%04d", this.id_libro);
 	}
 
 	public String descuento() {

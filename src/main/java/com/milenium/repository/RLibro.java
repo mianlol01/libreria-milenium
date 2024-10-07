@@ -294,4 +294,42 @@ public class RLibro implements ILibro {
 		}
 		return ok;
 	}
+
+	@Override
+	public List<Libro> librosSimilares(int id) {
+		List<Libro> lista = null;
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+
+		try {
+			con = MySQLConexion.getConexion();
+			String sql = "SELECT * FROM Libro WHERE id_categoria = ?";
+			pst = con.prepareStatement(sql);
+			pst.setInt(1, id); // Establecer el parámetro de la categoría
+			rs = pst.executeQuery();
+			lista = new ArrayList<Libro>();
+
+			while (rs.next()) {
+				Libro l = new Libro();
+				l.setId_libro(rs.getInt("id_libro"));
+				l.setTitulo(rs.getString("titulo"));
+				l.setId_autor(rs.getInt("id_autor"));
+				l.setSinopsis(rs.getString("sinopsis"));
+				l.setId_categoria(rs.getInt("id_categoria"));
+				l.setFecha_publicacion(rs.getString("fecha_publicacion"));
+				l.setPrecio(rs.getDouble("precio"));
+				l.setStock(rs.getInt("stock"));
+				l.setDescuento(rs.getInt("descuento"));
+				lista.add(l);
+			}
+
+		} catch (Exception e) {
+			System.out.println("Error en listarPorCategoria: " + e.getMessage());
+		} finally {
+			MySQLConexion.closeConexion(con);
+		}
+
+		return lista;
+	}
 }

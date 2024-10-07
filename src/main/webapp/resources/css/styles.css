@@ -5,20 +5,25 @@ body {
   background-color: rgb(238, 238, 238);
 }
 .nav-custom-container {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
+  padding-left: 0;
   padding-right: 15px;
   background-color: rgb(161, 45, 46);
   justify-content: center !important;
 }
-.ul-nav-container{
+.logo {
+  max-height: 100px;
+  background-color: black;
+  box-shadow: 0px 0px 10px 0px #000;
+}
+.ul-nav-container {
   align-items: center;
 }
 .custom-navbar {
   background-color: rgb(161, 45, 46);
-  height: 100px;
   z-index: 2000;
+  padding-top: 0;
+  padding-bottom: 0;
+  box-shadow: 0px 1px 10px 0px #000;
 }
 .custom-navbar .nav-link {
   font-size: 1.5rem;
@@ -31,6 +36,8 @@ body {
 .nav-link {
   display: flex;
   align-items: center;
+  color: black;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 .navbar-brand {
   font-size: 2.5rem;
@@ -42,13 +49,19 @@ body {
 .navbar-collapse {
   background-color: rgb(161, 45, 46);
 }
-.custom-input{
+.buscador-container {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #000;
+}
+.custom-input {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
-  outline: none ;
+  outline: none;
+  min-width: 50px;
   box-shadow: none !important;
 }
-.custom-btn-search{
+.custom-btn-search {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   background-color: rgb(237, 185, 46);
@@ -56,7 +69,7 @@ body {
 }
 /*Banner*/
 .banner {
-  position: sticky;
+  box-shadow: 0px 0px 10px 0px #000;
 }
 /**/
 .main-container {
@@ -64,8 +77,9 @@ body {
 }
 .main-titulo {
   font-weight: bold;
+  text-shadow: 0px 2px 5px rgb(0 0 0 / 50%);
 }
-.main-grid{
+.main-grid {
   padding-bottom: 15px;
 }
 /**/
@@ -125,11 +139,13 @@ body {
 .datos {
   padding-top: 15px;
   padding-bottom: 15px;
+  color: black;
+  text-shadow: 0px 2px 5px rgb(0 0 0 / 50%);
 }
 .datos p {
-  font-family: 'roboto';
+  font-family: "roboto";
 }
-.titulo{
+.titulo {
   font-weight: bold;
 }
 .transparente {
@@ -137,7 +153,7 @@ body {
   text-decoration: line-through; /* Tachado */
   text-decoration-color: rgb(0, 0, 0); /* Color de la línea tachada */
 }
-.btn-container{
+.btn-container {
   padding-bottom: 15px;
 }
 /**/
@@ -150,18 +166,21 @@ body {
   justify-items: center;
 }
 /**/
-.footer-container{
+.footer-container {
+  box-shadow: 0px -1px 10px 0px #000;
   padding-top: 25px;
-  padding-bottom: 15px;
+  padding-bottom: 1px;
   background-color: rgb(161, 45, 46);
   margin: 0;
   color: white;
+  text-shadow: 0px 2px 5px rgb(0 0 0 / 50%);
 }
 .footer-titulo {
-  font-family: 'roboto';
+  font-family: "roboto";
 }
-.footer-p{
-  font-family: 'roboto';
+.footer-p {
+  font-family: "roboto";
+  margin-top: 10px;
 }
 .descuento {
   position: absolute;
@@ -172,5 +191,6 @@ body {
   padding: 4px 8px;
   font-weight: bold;
   border-radius: 5px;
-  box-shadow: 0 4px 7px #000000;
+  box-shadow: 0px 1px 10px 0px #000;
+  text-shadow: 1px 2px 1px rgb(0 0 0);
 }

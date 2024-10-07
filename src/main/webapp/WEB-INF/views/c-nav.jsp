@@ -1,7 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<nav class="navbar navbar-expand-lg custom-navbar sticky-top">
+<nav class="navbar navbar-expand-xl custom-navbar sticky-top">
 	<div class="container-fluid nav-custom-container">
-		<a class="navbar-brand">MILENIUM</a>
+		<img class="img-fluid logo navbar-brand"
+			src="${pageContext.request.contextPath}/resources/images/logo.png"
+			alt="" />
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 			data-bs-target="#navbarNav" aria-controls="navbarNav"
 			aria-expanded="false" aria-label="Toggle navigation">
@@ -10,14 +12,14 @@
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<!-- Menú alineado a la derecha -->
 			<ul class="navbar-nav ms-auto ul-nav-container">
-				<li class="nav-item"><a class="nav-link active disabled"
-					aria-current="page" href="#"><i class="material-icons">home</i>INICIO</a></li>
+				<li class="nav-item"><a class="nav-link" aria-current="page"
+					href="#"><i class="material-icons">home</i>INICIO</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false"> <i
 						class="material-icons">book</i>LIBROS
 				</a>
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu dropdown-menu-dark">
 						<li><a class="dropdown-item">NOVEDADES</a></li>
 						<li><hr class="dropdown-divider" /></li>
 						<c:forEach items="${listaCategorias}" var="categoria">
@@ -30,12 +32,15 @@
 						class="material-icons">person</i>CUENTA</a></li>
 				<li class="nav-item">
 					<div class="nav-link">
-						<form action="buscador" method="post" class="d-flex" role="search">
-							<input name="txtFrase" class="form-control custom-input"
-								type="search" placeholder="Buscar" aria-label="Search" />
-							<button class="btn btn-outline-warning custom-btn-search"
-								type="submit">Buscar</button>
-						</form>
+						<div class="buscador-container">
+							<form action="buscador" method="post" class="d-flex"
+								role="search">
+								<input name="txtFrase" class="form-control custom-input"
+									type="search" placeholder="Buscar" aria-label="Search" />
+								<button class="btn btn-outline-warning custom-btn-search"
+									type="submit">Buscar</button>
+							</form>
+						</div>
 					</div>
 				</li>
 			</ul>
