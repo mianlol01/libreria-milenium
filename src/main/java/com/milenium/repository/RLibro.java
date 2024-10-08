@@ -20,7 +20,7 @@ public class RLibro implements ILibro {
 		List<Libro> lista = null;
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "select * from Libro";
+			String sql = "call ObtenerLibrosConAutorYCategoria()";
 			pst = con.prepareStatement(sql);
 			rs = pst.executeQuery();
 			lista = new ArrayList<Libro>();
@@ -30,11 +30,11 @@ public class RLibro implements ILibro {
 				l.setTitulo(rs.getString("titulo"));
 				l.setId_autor(rs.getInt("id_autor"));
 				l.setSinopsis(rs.getString("sinopsis"));
-				l.setId_categoria(rs.getInt("id_categoria"));
 				l.setFecha_publicacion(rs.getString("fecha_publicacion"));
 				l.setPrecio(rs.getDouble("precio"));
 				l.setStock(rs.getInt("stock"));
 				l.setDescuento(rs.getInt("descuento"));
+				l.setNombre_autor(rs.getString("nombre_autor"));
 				lista.add(l);
 			}
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class RLibro implements ILibro {
 		Libro libro = null;
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "SELECT * FROM Libro WHERE id_libro = ?";
+			String sql = "call ObtenerLibroPorId(?); ";
 			pst = con.prepareStatement(sql);
 			pst.setInt(1, id);
 			rs = pst.executeQuery();
@@ -63,14 +63,14 @@ public class RLibro implements ILibro {
 				libro.setTitulo(rs.getString("titulo"));
 				libro.setId_autor(rs.getInt("id_autor"));
 				libro.setSinopsis(rs.getString("sinopsis"));
-				libro.setId_categoria(rs.getInt("id_categoria"));
 				libro.setFecha_publicacion(rs.getString("fecha_publicacion"));
 				libro.setPrecio(rs.getDouble("precio"));
 				libro.setStock(rs.getInt("stock"));
 				libro.setDescuento(rs.getInt("descuento"));
+				libro.setNombre_autor(rs.getString("nombre_autor"));
 			}
 		} catch (Exception e) {
-			System.out.println("Error en obtener Libro: " + e.getMessage());
+			System.out.println("Error en obtener Libro por id: " + e.getMessage());
 		} finally {
 			MySQLConexion.closeConexion(con);
 		}
@@ -84,16 +84,15 @@ public class RLibro implements ILibro {
 		PreparedStatement pst = null;
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "INSERT INTO Libro (titulo, id_autor, sinopsis, id_categoria, fecha_publicacion, precio, stock, descuento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Libro (titulo, id_autor, sinopsis, fecha_publicacion, precio, stock, descuento) VALUES (?, ?, ?, ?, ?, ?, ?)";
 			pst = con.prepareStatement(sql);
 			pst.setString(1, l.getTitulo());
 			pst.setInt(2, l.getId_autor());
 			pst.setString(3, l.getSinopsis());
-			pst.setInt(4, l.getId_categoria());
-			pst.setString(5, l.getFecha_publicacion());
-			pst.setDouble(6, l.getPrecio());
-			pst.setInt(7, l.getStock());
-			pst.setInt(8, l.getDescuento());
+			pst.setString(4, l.getFecha_publicacion());
+			pst.setDouble(5, l.getPrecio());
+			pst.setInt(6, l.getStock());
+			pst.setInt(7, l.getDescuento());
 			ok = pst.executeUpdate();
 		} catch (Exception e) {
 			System.out.println("Error en registrar Libro: " + e.getMessage());
@@ -140,13 +139,11 @@ public class RLibro implements ILibro {
 				l.setTitulo(rs.getString("titulo"));
 				l.setId_autor(rs.getInt("id_autor"));
 				l.setSinopsis(rs.getString("sinopsis"));
-				l.setId_categoria(rs.getInt("id_categoria"));
 				l.setFecha_publicacion(rs.getString("fecha_publicacion"));
 				l.setPrecio(rs.getDouble("precio"));
 				l.setStock(rs.getInt("stock"));
 				l.setDescuento(rs.getInt("descuento"));
 				l.setNombre_autor(rs.getString("nombre_autor"));
-				l.setNombre_categoria(rs.getString("nombre_categoria"));
 				lista.add(l);
 			}
 		} catch (Exception e) {
@@ -176,11 +173,11 @@ public class RLibro implements ILibro {
 				l.setTitulo(rs.getString("titulo"));
 				l.setId_autor(rs.getInt("id_autor"));
 				l.setSinopsis(rs.getString("sinopsis"));
-				l.setId_categoria(rs.getInt("id_categoria"));
 				l.setFecha_publicacion(rs.getString("fecha_publicacion"));
 				l.setPrecio(rs.getDouble("precio"));
 				l.setStock(rs.getInt("stock"));
 				l.setDescuento(rs.getInt("descuento"));
+				l.setNombre_autor(rs.getString("nombre_autor"));
 				lista.add(l);
 			}
 		} catch (Exception e) {
@@ -200,7 +197,7 @@ public class RLibro implements ILibro {
 
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "SELECT * FROM Libro WHERE id_categoria = ?";
+			String sql = "call ObtenerLibrosPorCategoria(?)";
 			pst = con.prepareStatement(sql);
 			pst.setInt(1, id); // Establecer el parámetro de la categoría
 			rs = pst.executeQuery();
@@ -212,11 +209,11 @@ public class RLibro implements ILibro {
 				l.setTitulo(rs.getString("titulo"));
 				l.setId_autor(rs.getInt("id_autor"));
 				l.setSinopsis(rs.getString("sinopsis"));
-				l.setId_categoria(rs.getInt("id_categoria"));
 				l.setFecha_publicacion(rs.getString("fecha_publicacion"));
 				l.setPrecio(rs.getDouble("precio"));
 				l.setStock(rs.getInt("stock"));
 				l.setDescuento(rs.getInt("descuento"));
+				l.setNombre_autor(rs.getString("nombre_autor"));
 				lista.add(l);
 			}
 
@@ -277,7 +274,7 @@ public class RLibro implements ILibro {
 		int ok = 0;
 		Connection con = null;
 		PreparedStatement pst = null;
-		//Obtener libro
+		// Obtener libro
 		Libro l = obtenerLibro(id);
 		int nuevoStock = l.getStock() - cantidad;
 		try {
@@ -304,7 +301,7 @@ public class RLibro implements ILibro {
 
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "SELECT * FROM Libro WHERE id_categoria = ?";
+			String sql = "call BuscarLibrosSimilares(?)";
 			pst = con.prepareStatement(sql);
 			pst.setInt(1, id); // Establecer el parámetro de la categoría
 			rs = pst.executeQuery();
@@ -316,11 +313,11 @@ public class RLibro implements ILibro {
 				l.setTitulo(rs.getString("titulo"));
 				l.setId_autor(rs.getInt("id_autor"));
 				l.setSinopsis(rs.getString("sinopsis"));
-				l.setId_categoria(rs.getInt("id_categoria"));
 				l.setFecha_publicacion(rs.getString("fecha_publicacion"));
 				l.setPrecio(rs.getDouble("precio"));
 				l.setStock(rs.getInt("stock"));
 				l.setDescuento(rs.getInt("descuento"));
+				l.setNombre_autor(rs.getString("nombre_autor"));
 				lista.add(l);
 			}
 

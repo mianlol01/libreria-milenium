@@ -5,14 +5,12 @@ public class Libro {
 	private String titulo;
 	private int id_autor;
 	private String sinopsis;
-	private int id_categoria;
 	private String fecha_publicacion;
 	private double precio;
 	private int stock;
 	private int descuento;
 
 	private String nombre_autor;
-	private String nombre_categoria;
 
 	public double precioFinal() {
 		return this.precio - (this.precio * this.descuento / 100);
@@ -62,14 +60,6 @@ public class Libro {
 		this.sinopsis = sinopsis;
 	}
 
-	public int getId_categoria() {
-		return id_categoria;
-	}
-
-	public void setId_categoria(int id_categoria) {
-		this.id_categoria = id_categoria;
-	}
-
 	public String getFecha_publicacion() {
 		return fecha_publicacion;
 	}
@@ -110,19 +100,10 @@ public class Libro {
 		this.nombre_autor = nombre_autor;
 	}
 
-	public String getNombre_categoria() {
-		return nombre_categoria;
-	}
-
-	public void setNombre_categoria(String nombre_categoria) {
-		this.nombre_categoria = nombre_categoria;
-	}
-
 	@Override
 	public String toString() {
 		return "Libro [id_libro=" + id_libro + ", titulo=" + titulo + ", id_autor=" + id_autor + ", sinopsis="
-				+ sinopsis + ", id_categoria=" + id_categoria + ", fecha_publicacion=" + fecha_publicacion + ", precio="
-				+ precio + ", stock=" + stock + ", descuento=" + descuento + ", nombre_autor=" + nombre_autor
-				+ ", nombre_categoria=" + nombre_categoria + "]";
+				+ sinopsis + ", fecha_publicacion=" + fecha_publicacion + ", precio=" + precio + ", stock=" + stock
+				+ ", descuento=" + descuento + ", nombre_autor=" + nombre_autor + "]";
 	}
 }

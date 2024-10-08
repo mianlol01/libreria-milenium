@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
+<title>MILENIUM</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet" />
@@ -34,7 +34,7 @@
 						<!-- Puedes agregar más artículos aquí -->
 						<li class="card-custom">
 							<div class="portada">
-								<img
+								<img class="portada-img"
 									src="${pageContext.request.contextPath}/resources/images/${destacado.ruta()}.png"
 									alt="" /> <span class="descuento fs-6 font-monospace">-${destacado.descuento}%</span>
 							</div>
@@ -46,9 +46,10 @@
 									<p class="fs-6 font-monospace">S/${destacado.descuento()}</p>
 								</div>
 							</div>
-							<form class="btn-container">
-								<a class="btn btn-custom">COMPRAR</a>
-							</form>
+							<div class="btn-container">
+								<a href="product?book=${destacado.id_libro}"
+									class="btn btn-custom">COMPRAR</a>
+							</div>
 						</li>
 					</c:forEach>
 					<!-- Puedes agregar más artículos aquí -->

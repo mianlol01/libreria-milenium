@@ -3,6 +3,10 @@ package com.milenium.model;
 public class Categoria {
 	private int id_categoria;
 	private String nombre_categoria;
+	
+	public String nombreCategoria() {
+		return this.nombre_categoria.toUpperCase();
+	}
 
 	public int getId_categoria() {
 		return id_categoria;

@@ -119,6 +119,9 @@ body {
   box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
 }
+.portada-img {
+  box-shadow: 0px 2px 6px rgb(0 0 0 / 30%);
+}
 .btn-custom {
   --bs-btn-color: #ffffff;
   --bs-btn-bg: rgb(161, 45, 46);
@@ -134,6 +137,7 @@ body {
   --bs-btn-disabled-color: #000;
   --bs-btn-disabled-bg: rgb(161, 45, 46);
   --bs-btn-disabled-border-color: rgb(161, 45, 46);
+  box-shadow: 0 2px 10px 0px rgb(0 0 0);
 }
 /**/
 .datos {
@@ -193,4 +197,32 @@ body {
   border-radius: 5px;
   box-shadow: 0px 1px 10px 0px #000;
   text-shadow: 1px 2px 1px rgb(0 0 0);
+}
+/**/
+.main-blanco{
+  background-color: white;
+}
+.producto-main{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.img_libro{
+  box-shadow: 0 5px 10px 2px rgb(0 0 0 / 50%);
+}
+.col-dato {
+  align-content: center;
+}
+.container-compra{
+  border-style: dotted;
+}
+.col-precio {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.form-compra {
+  text-align: -webkit-center;
+}
+.btn-compra{
+  margin-top: 10px;
 }

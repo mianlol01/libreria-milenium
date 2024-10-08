@@ -1,6 +1,8 @@
 package com.milenium.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,12 +37,14 @@ public class ProductServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
+		int idLibro = Integer.parseInt(request.getParameter("book"));
 		RLibro rl = new RLibro();
-		int idLibro = Integer.parseInt(request.getParameter("id"));
 		Libro libro = rl.obtenerLibro(idLibro);
 		if (libro != null) {
 			session.setAttribute("libro", libro);
 			request.setAttribute("libro", libro);
+			List<Libro> listaSimilares = rl.librosSimilares(idLibro);
+			request.setAttribute("listaSimilares", listaSimilares);
 			request.getRequestDispatcher("/WEB-INF/views/product.jsp").forward(request, response);
 		} else {
 			response.sendRedirect("/WEB-INF/views/error.jsp");

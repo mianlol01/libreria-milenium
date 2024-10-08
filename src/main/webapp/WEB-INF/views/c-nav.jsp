@@ -13,7 +13,7 @@
 			<!-- Menú alineado a la derecha -->
 			<ul class="navbar-nav ms-auto ul-nav-container">
 				<li class="nav-item"><a class="nav-link" aria-current="page"
-					href="#"><i class="material-icons">home</i>INICIO</a></li>
+					href="home"><i class="material-icons">home</i>INICIO</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false"> <i
@@ -23,7 +23,7 @@
 						<li><a class="dropdown-item">NOVEDADES</a></li>
 						<li><hr class="dropdown-divider" /></li>
 						<c:forEach items="${listaCategorias}" var="categoria">
-							<li><a class="dropdown-item" href="#">${categoria.nombre_categoria}</a></li>
+							<li><a class="dropdown-item" href="category?category=${categoria.id_categoria}">${categoria.nombre_categoria}</a></li>
 						</c:forEach>
 					</ul></li>
 				<li class="nav-item"><a class="nav-link" href="#"><i
