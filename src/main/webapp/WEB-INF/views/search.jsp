@@ -23,7 +23,7 @@
 	<div class="container-sm main-container">
 		<div class="container-fluid text-center">
 			<h1 class="main-titulo fs-1">RESULTADOS DE LA BÚSQUEDA PARA:
-				${frase)}</h1>
+				${frase}</h1>
 		</div>
 		<div class="container-fluid main-grid">
 			<div class="container mt-5">
@@ -46,7 +46,7 @@
 								</div>
 							</div>
 							<div class="btn-container">
-								<a href="product?book=${libro.id_libro}" class="btn btn-custom">COMPRAR</a>
+								<a href="product?id=${libro.id_libro}" class="btn btn-custom">COMPRAR</a>
 							</div>
 						</li>
 					</c:forEach>

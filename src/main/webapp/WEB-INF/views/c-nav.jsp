@@ -23,20 +23,51 @@
 						<li><a class="dropdown-item">NOVEDADES</a></li>
 						<li><hr class="dropdown-divider" /></li>
 						<c:forEach items="${listaCategorias}" var="categoria">
-							<li><a class="dropdown-item" href="category?category=${categoria.id_categoria}">${categoria.nombre_categoria}</a></li>
+							<li><a class="dropdown-item"
+								href="category?id=${categoria.id_categoria}">${categoria.nombre_categoria}</a></li>
 						</c:forEach>
 					</ul></li>
-				<li class="nav-item"><a class="nav-link" href="#"><i
-						class="material-icons">add_shopping_cart</i>CARRITO</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"><i
-						class="material-icons">person</i>CUENTA</a></li>
+
+				<li class="nav-item"><a class="nav-link" href="#"> <i
+						class="material-icons">add_shopping_cart</i>CARRITO
+				</a></li>
+
+				<c:if test="${cliente == null}">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> <i
+							class="material-icons">person</i>CUENTA
+					</a>
+						<ul class="dropdown-menu dropdown-menu-dark">
+
+							<li><a class="dropdown-item" href=login>Iniciar Sesión</a></li>
+							<li><a class="dropdown-item" href=signup>Registrarse</a></li>
+						</ul></li>
+				</c:if>
+
+				<c:if test="${cliente != null}">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> <i
+							class="material-icons">person</i>${cliente.username_cliente}
+					</a>
+						<ul class="dropdown-menu dropdown-menu-dark">
+
+							<li><a class="dropdown-item" href="login?action=manage">Configurar
+									Cuenta</a></li>
+							<li><hr class="dropdown-divider" /></li>
+							<li><a class="dropdown-item" href="login?action=logout">Cerrar Sesión</a></li>
+						</ul></li>
+				</c:if>
+
+
+
 				<li class="nav-item">
 					<div class="nav-link">
 						<div class="buscador-container">
-							<form action="buscador" method="post" class="d-flex"
-								role="search">
-								<input name="txtFrase" class="form-control custom-input"
-									type="search" placeholder="Buscar" aria-label="Search" />
+							<form action="search" method="get" class="d-flex" role="search">
+								<input name="q" class="form-control custom-input" type="search"
+									placeholder="Buscar" aria-label="Search" required />
 								<button class="btn btn-outline-warning custom-btn-search"
 									type="submit">Buscar</button>
 							</form>

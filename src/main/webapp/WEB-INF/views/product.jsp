@@ -141,7 +141,7 @@
 								</div>
 							</div>
 							<div class="btn-container">
-								<a href="product?book=${destacado.id_libro}"
+								<a href="product?id=${destacado.id_libro}"
 									class="btn btn-custom">COMPRAR</a>
 							</div>
 						</li>

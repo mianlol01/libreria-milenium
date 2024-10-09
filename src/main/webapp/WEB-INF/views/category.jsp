@@ -45,7 +45,7 @@
 								</div>
 							</div>
 							<div class="btn-container">
-								<a href="product?book=${libro.id_libro}"
+								<a href="product?id=${libro.id_libro}"
 									class="btn btn-custom">COMPRAR</a>
 							</div>
 						</li>
