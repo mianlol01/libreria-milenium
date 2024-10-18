@@ -1,10 +1,19 @@
 package com.milenium.model;
 
+import java.util.List;
+
 public class Boleta {
 	private String id_boleta;
 	private String id_cliente;
 	private double total;
 	private String fecha_boleta;
+	private List<DetalleBoleta> listaDetalle;
+
+	@Override
+	public String toString() {
+		return "Boleta [id_boleta=" + id_boleta + ", id_cliente=" + id_cliente + ", total=" + total + ", fecha_boleta="
+				+ fecha_boleta + "]";
+	}
 
 	public String getId_boleta() {
 		return id_boleta;
@@ -38,10 +47,12 @@ public class Boleta {
 		this.fecha_boleta = fecha_boleta;
 	}
 
-	@Override
-	public String toString() {
-		return "Boleta [id_boleta=" + id_boleta + ", id_cliente=" + id_cliente + ", total=" + total + ", fecha_boleta="
-				+ fecha_boleta + "]";
+	public List<DetalleBoleta> getListaDetalle() {
+		return listaDetalle;
+	}
+
+	public void setListaDetalle(List<DetalleBoleta> listaDetalle) {
+		this.listaDetalle = listaDetalle;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.milenium.model;
 
+import java.util.List;
+
 public class Cliente {
 	private String id_cliente;
 	private String nombre_cliente;
@@ -7,6 +9,7 @@ public class Cliente {
 	private String correo_cliente;
 	private String username_cliente;
 	private String password_cliente;
+	private List<Boleta> boletas;
 
 	public String getId_cliente() {
 		return id_cliente;
@@ -61,5 +64,13 @@ public class Cliente {
 		return "Cliente [id_cliente=" + id_cliente + ", nombre_cliente=" + nombre_cliente + ", apellido_cliente="
 				+ apellido_cliente + ", correo_cliente=" + correo_cliente + ", username_cliente=" + username_cliente
 				+ ", password_cliente=" + password_cliente + "]";
+	}
+
+	public List<Boleta> getBoletas() {
+		return boletas;
+	}
+
+	public void setBoletas(List<Boleta> boletas) {
+		this.boletas = boletas;
 	}
 }

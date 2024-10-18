@@ -3,6 +3,7 @@ package com.milenium.model;
 public class Autor {
 	private int id_autor;
 	private String nombre_autor;
+	private int cantidad_libros;
 
 	public int getId_autor() {
 		return id_autor;
@@ -23,5 +24,13 @@ public class Autor {
 	@Override
 	public String toString() {
 		return "Autor [id_autor=" + id_autor + ", nombre_autor=" + nombre_autor + "]";
+	}
+
+	public int getCantidad_libros() {
+		return cantidad_libros;
+	}
+
+	public void setCantidad_libros(int cantidad_libros) {
+		this.cantidad_libros = cantidad_libros;
 	}
 }

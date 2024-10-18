@@ -20,7 +20,7 @@
 						class="material-icons">book</i>LIBROS
 				</a>
 					<ul class="dropdown-menu dropdown-menu-dark">
-						<li><a class="dropdown-item">NOVEDADES</a></li>
+						<li><a class="dropdown-item">CATEGORÍAS</a></li>
 						<li><hr class="dropdown-divider" /></li>
 						<c:forEach items="${listaCategorias}" var="categoria">
 							<li><a class="dropdown-item"
@@ -28,7 +28,7 @@
 						</c:forEach>
 					</ul></li>
 
-				<li class="nav-item"><a class="nav-link" href="#"> <i
+				<li class="nav-item"><a class="nav-link" href="cart"> <i
 						class="material-icons">add_shopping_cart</i>CARRITO
 				</a></li>
 
@@ -53,10 +53,11 @@
 					</a>
 						<ul class="dropdown-menu dropdown-menu-dark">
 
-							<li><a class="dropdown-item" href="login?action=manage">Configurar
+							<li><a class="dropdown-item" href="account">Configurar
 									Cuenta</a></li>
 							<li><hr class="dropdown-divider" /></li>
-							<li><a class="dropdown-item" href="login?action=logout">Cerrar Sesión</a></li>
+							<li><a class="dropdown-item" href="login?action=logout">Cerrar
+									Sesión</a></li>
 						</ul></li>
 				</c:if>
 
@@ -74,6 +75,30 @@
 						</div>
 					</div>
 				</li>
+				<c:if test="${mensajeLogin eq 'login'}">
+					<li class="nav-item">
+						<div
+							class="alert alert-primary alert-primary-custom alert-dismissible fade show"
+							role="alert">
+							Sesión iniciada correctamente.
+							<button type="button" class="btn-close btn-close-custom"
+								data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+
+					</li>
+				</c:if>
+				<c:if test="${mensajeLogin eq 'logout'}">
+					<li class="nav-item">
+						<div
+							class="alert alert-primary alert-primary-custom alert-dismissible fade show"
+							role="alert">
+							Sesión cerrada.
+							<button type="button" class="btn-close btn-close-custom"
+								data-bs-dismiss="alert" aria-label="Close"></button>
+						</div>
+
+					</li>
+				</c:if>
 			</ul>
 		</div>
 	</div>

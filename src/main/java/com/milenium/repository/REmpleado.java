@@ -3,6 +3,7 @@ package com.milenium.repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import com.milenium.connection.MySQLConexion;
 import com.milenium.interfaces.IEmpleado;
 import com.milenium.model.Empleado;
 
-public class REmpleado implements IEmpleado{
+public class REmpleado implements IEmpleado {
 
 	@Override
 	public List<Empleado> listadoEmpleados() {
@@ -42,9 +43,46 @@ public class REmpleado implements IEmpleado{
 	}
 
 	@Override
-	public Empleado ingreso(Empleado e) {
-		// TODO Auto-generated method stub
-		return null;
+	public Empleado ingreso(String username, String password) {
+		Empleado e = null;
+		if (username == null || password == null) {
+			return e;
+		}
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			con = MySQLConexion.getConexion();
+			String sql = "call ValidarEmpleado(?, ?);";
+			pst = con.prepareStatement(sql);
+			pst.setString(1, username);
+			pst.setString(2, password);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				e = new Empleado();
+				e.setId_empleado(rs.getString("id_empleado"));
+				e.setNombre_empleado(rs.getString("nombre_empleado"));
+				e.setApellido_empleado(rs.getString("apellido_empleado"));
+				e.setUsername_empleado(rs.getString("username_empleado"));
+				e.setPassword_empleado(rs.getString("password_empleado"));
+			}
+
+		} catch (SQLException x) {
+			System.out.println("Error en validar Empleado: " + x.getMessage());
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pst != null) {
+					pst.close();
+				}
+				MySQLConexion.closeConexion(con);
+			} catch (SQLException x) {
+				System.out.println("Error al cerrar los recursos: " + x.getMessage());
+			}
+		}
+		return e;
 	}
 
 	@Override

@@ -36,18 +36,19 @@ public class CategoriaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		int idCategoria = Integer.parseInt(request.getParameter("category"));
+		int idCategoria = Integer.parseInt(request.getParameter("id"));
 		RLibro rl = new RLibro();
 		RCategoria rc = new RCategoria();
 		Categoria c = rc.obtenerCategoria(idCategoria);
 		if (c == null) {
 			response.sendRedirect("/WEB-INF/views/error.jsp");
+			return;
 		}
 		List<Libro> listaLibrosPorCategoria = rl.filtrarCategoria(idCategoria);
 		request.setAttribute("categoria", c);
 		request.setAttribute("listaLibrosPorCategoria", listaLibrosPorCategoria);
 		request.getRequestDispatcher("/WEB-INF/views/category.jsp").forward(request, response);
+		return;
 	}
 
 	/**

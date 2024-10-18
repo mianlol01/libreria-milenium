@@ -9,4 +9,5 @@ public interface IAutor {
 	public Autor obtenerAutor(int id);
 	public int registrarAutor(Autor a);
 	public int eliminarAutor(int id);
+	public Autor obtenerAutor(String nombre_autor);
 }

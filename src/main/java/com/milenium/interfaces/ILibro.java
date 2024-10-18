@@ -9,7 +9,7 @@ public interface ILibro {
 
 	public Libro obtenerLibro(int id);
 
-	public int registrarLibro(Libro l);
+	public int registrarLibro(Libro l, int[] idsCategorias);
 
 	public int eliminarLibro(int id);
 
@@ -26,4 +26,6 @@ public interface ILibro {
 	public int actualizarStock(int id, int stock);
 
 	public List<Libro> librosSimilares(int id);
+	
+	public int configurarCategoria(int idLibro, int[]categorias);
 }

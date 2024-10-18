@@ -9,8 +9,39 @@ import java.util.List;
 import com.milenium.connection.MySQLConexion;
 import com.milenium.interfaces.ICategoria;
 import com.milenium.model.Categoria;
+import com.milenium.model.CategoriaReporte;
 
 public class RCategoria implements ICategoria {
+
+	public List<CategoriaReporte> obtenerReporteCategoriasVendidas() {
+		List<CategoriaReporte> listaReporte = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+
+		try {
+			con = MySQLConexion.getConexion(); // Conexión a la base de datos
+			String sql = "SELECT c.nombre_categoria AS Categoria, COUNT(db.id_detalle_boleta) AS Cantidad_Vendida "
+					+ "FROM Categoria c " + "LEFT JOIN Libro_Categoria lc ON c.id_categoria = lc.id_categoria "
+					+ "LEFT JOIN Libro l ON lc.id_libro = l.id_libro "
+					+ "LEFT JOIN Detalle_Boleta db ON l.id_libro = db.id_libro " + "GROUP BY c.id_categoria "
+					+ "ORDER BY Cantidad_Vendida DESC;";
+			pst = con.prepareStatement(sql);
+			rs = pst.executeQuery();
+
+			while (rs.next()) {
+				String nombreCategoria = rs.getString("Categoria");
+				int cantidadVendida = rs.getInt("Cantidad_Vendida");
+				CategoriaReporte reporte = new CategoriaReporte(nombreCategoria, cantidadVendida);
+				listaReporte.add(reporte);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			MySQLConexion.closeConexion(con); // Cerrar la conexión
+		}
+		return listaReporte;
+	}
 
 	@Override
 	public List<Categoria> listarCategoria() {

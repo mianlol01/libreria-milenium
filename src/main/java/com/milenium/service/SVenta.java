@@ -1,8 +1,7 @@
 package com.milenium.service;
 
-import java.util.List;
-
 import com.milenium.model.Boleta;
+import com.milenium.model.Cart;
 import com.milenium.model.DetalleBoleta;
 import com.milenium.model.Libro;
 import com.milenium.repository.RBoleta;
@@ -20,7 +19,7 @@ public class SVenta {
 		return codigo;
 	}
 
-	public int realizarVenta(String codigoCliente, List<DetalleBoleta> listaBoleta) {
+	public int realizarVenta(String codigoCliente, Cart listaBoleta) {
 		RDetalleBoleta rdb = new RDetalleBoleta();
 		RBoleta rb = new RBoleta();
 		RLibro rl = new RLibro();

@@ -7,7 +7,7 @@ import com.milenium.model.Empleado;
 public interface IEmpleado {
 	public List<Empleado> listadoEmpleados();
 
-	public Empleado ingreso(Empleado e);
+	public Empleado ingreso(String username, String password);
 
 	public int actualizar(Empleado e);
 }

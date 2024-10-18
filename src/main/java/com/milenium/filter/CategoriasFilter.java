@@ -13,7 +13,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 
 import com.milenium.model.Categoria;
+import com.milenium.model.Libro;
 import com.milenium.repository.RCategoria;
+import com.milenium.repository.RLibro;
 
 /**
  * Servlet Filter implementation class CategoriasFilter
@@ -21,6 +23,7 @@ import com.milenium.repository.RCategoria;
 @WebFilter("/*")
 public class CategoriasFilter implements Filter {
 	private List<Categoria> listaCategorias;
+	private List<Libro> listaDestacados;
 
 	/**
 	 * @see HttpFilter#HttpFilter()
@@ -43,7 +46,7 @@ public class CategoriasFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		request.setAttribute("listaCategorias", listaCategorias);
-		System.out.println("este es el filter :)");
+		request.setAttribute("listaDestacados", listaDestacados);
 		chain.doFilter(request, response);
 	}
 
@@ -51,8 +54,10 @@ public class CategoriasFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
+		RLibro rl = new RLibro();
 		RCategoria rc = new RCategoria();
-		listaCategorias = rc.listarCategoria(); // Cargar la lista una vez
+		listaCategorias = rc.listarCategoria();
+		listaDestacados = rl.listarDestacados();
 	}
 
 }

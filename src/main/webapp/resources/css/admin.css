@@ -1,0 +1,8 @@
+/* Estilo adicional para el menú lateral */
+.sidebar {
+	min-height: 100vh;
+}
+
+.sidebar a:hover {
+	background-color: #000000;
+}

@@ -57,15 +57,6 @@
 								<hr />
 							</div>
 							<div class="row dato-producto">
-								<div class="col">
-									<p class="titulo">FECHA DE DE PUBLICACIÓN:</p>
-								</div>
-								<div class="col col-dato">
-									<p>${libro.fecha_publicacion}</p>
-								</div>
-								<hr />
-							</div>
-							<div class="row dato-producto">
 								<p class="titulo text-center">SINOPSIS</p>
 								<p>${libro.sinopsis}</p>
 							</div>
@@ -73,8 +64,9 @@
 					</div>
 					<div class="col-lg-4 col-md-6 col-12 container-compra">
 						<div class="p-3 col-compra">
-							<form>
-								<p class="titulo fs-5 text-center">COMPRAR</p>
+
+							<p class="titulo fs-5 text-center">COMPRAR</p>
+							<form action="cart" method="post">
 								<div class="row dato-producto">
 									<div class="col">
 										<p class="titulo">PRECIO:</p>
@@ -101,13 +93,39 @@
 									</div>
 									<div class="col form-compra">
 										<input type="number" class="form-control" id="inputNumeros"
-											name="cantidad" min="0" step="1"
-											placeholder="Ingrese cantidad" />
+											name="cantidad" value="1" min="1" max="${libro.stock}"
+											step="1" placeholder="Ingrese cantidad" required />
 									</div>
+									<c:if test="${restante > 0}">
+										<div class="custom-alert">
+											<div
+												class="alert alert-danger alert-dismissible custom-succes-alert"
+												role="alert">
+												<div>Ya cuenta con este producto en su carrito. La
+													cantidad a ingresar no debe superar: ${restante}</div>
+												<button type="submit" class="btn-close btn-close-custom"
+													data-bs-dismiss="alert" aria-label="Close"></button>
+											</div>
+										</div>
+									</c:if>
+									<c:if test="${restante == 0}">
+										<div class="custom-alert">
+											<div
+												class="alert alert-danger alert-dismissible custom-succes-alert"
+												role="alert">
+												<div>Ya no puede agregar más unidades de este producto
+													a su carrito</div>
+												<button type="submit" class="btn-close btn-close-custom"
+													data-bs-dismiss="alert" aria-label="Close"></button>
+											</div>
+										</div>
+									</c:if>
 									<hr />
 								</div>
 								<div class="text-center">
-									<button class="btn btn-custom btn-compra">COMPRAR</button>
+									<input type="hidden" name="action" value="add" /> <input
+										type="hidden" name="id_libro" value="${libro.id_libro}" />
+									<button type="submit" class="btn btn-custom btn-compra">COMPRAR</button>
 								</div>
 							</form>
 						</div>

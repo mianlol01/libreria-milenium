@@ -1,13 +1,10 @@
 package com.milenium.listener;
 
-import java.util.ArrayList;
-
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import com.milenium.model.DetalleBoleta;
-
+import com.milenium.model.Cart;
 /**
  * Application Lifecycle Listener implementation class CompraListener
  *
@@ -26,14 +23,10 @@ public class CompraListener implements HttpSessionListener {
 	 */
 	public void sessionCreated(HttpSessionEvent se) {
 		// crear los elementos del carrito
-		ArrayList<DetalleBoleta> carro = new ArrayList<DetalleBoleta>();
-		int cantArticulos = 0;
-		double subTotalVenta = 0;
+		Cart cart = new Cart();
 
-		// enviar a nivel de session
-		se.getSession().setAttribute("carro", carro);
-		se.getSession().setAttribute("cantArticulos", cantArticulos);
-		se.getSession().setAttribute("subTotalVenta", subTotalVenta);
+		se.getSession().setAttribute("cart", cart);
+		System.out.println("se entró al listener");
 
 	}
 

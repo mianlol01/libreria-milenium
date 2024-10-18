@@ -1,14 +1,17 @@
 package com.milenium.model;
 
+import java.util.List;
+
 public class Libro {
 	private int id_libro;
 	private String titulo;
 	private int id_autor;
 	private String sinopsis;
-	private String fecha_publicacion;
+	private String fecha_registro;
 	private double precio;
 	private int stock;
 	private int descuento;
+	private List<Categoria> categorias;
 
 	private String nombre_autor;
 
@@ -60,14 +63,6 @@ public class Libro {
 		this.sinopsis = sinopsis;
 	}
 
-	public String getFecha_publicacion() {
-		return fecha_publicacion;
-	}
-
-	public void setFecha_publicacion(String fecha_publicacion) {
-		this.fecha_publicacion = fecha_publicacion;
-	}
-
 	public double getPrecio() {
 		return precio;
 	}
@@ -100,10 +95,27 @@ public class Libro {
 		this.nombre_autor = nombre_autor;
 	}
 
+
+	public String getFecha_registro() {
+		return fecha_registro;
+	}
+
+	public void setFecha_registro(String fecha_registro) {
+		this.fecha_registro = fecha_registro;
+	}
+
 	@Override
 	public String toString() {
 		return "Libro [id_libro=" + id_libro + ", titulo=" + titulo + ", id_autor=" + id_autor + ", sinopsis="
-				+ sinopsis + ", fecha_publicacion=" + fecha_publicacion + ", precio=" + precio + ", stock=" + stock
+				+ sinopsis + ", fecha_registro=" + fecha_registro + ", precio=" + precio + ", stock=" + stock
 				+ ", descuento=" + descuento + ", nombre_autor=" + nombre_autor + "]";
+	}
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 }

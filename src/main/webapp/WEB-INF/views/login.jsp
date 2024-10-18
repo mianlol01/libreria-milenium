@@ -45,7 +45,8 @@
 					<button class="form-btn">REGISTRAR</button>
 					<div>${mensajesignup}</div>
 					<p class="message">
-						¿Ya está registrado? <a id="login-toggle" href="#">Iniciar Sesión</a>
+						¿Ya está registrado? <a id="login-toggle" href="#">Iniciar
+							Sesión</a>
 					</p>
 				</form>
 				<form action="login" method="post" class="login-form">
@@ -59,7 +60,8 @@
 					<button class="form-btn">ingresar</button>
 					<div>${mensaje}</div>
 					<p class="message">
-						¿Aún no está registrado? <a id="signup-toggle" href="#">Crear cuenta</a>
+						¿Aún no está registrado? <a id="signup-toggle" href="#">Crear
+							cuenta</a>
 					</p>
 					<p class="message">
 						<a href="home">Volver a la tienda</a>

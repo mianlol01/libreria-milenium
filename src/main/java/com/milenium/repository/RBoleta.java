@@ -4,12 +4,40 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 import com.milenium.connection.MySQLConexion;
 import com.milenium.interfaces.IBoleta;
 import com.milenium.model.Boleta;
 
 public class RBoleta implements IBoleta {
+
+	@Override
+	public ArrayList<Boleta> obtenerBoletasCliente(String id_cliente) {
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		ArrayList<Boleta> listaBoletas = new ArrayList<Boleta>();
+		try {
+			con = MySQLConexion.getConexion();
+			String sql = "select * from Boleta where id_cliente = ?";
+			pst = con.prepareStatement(sql);
+			pst.setString(1, id_cliente);
+			rs = pst.executeQuery();
+			while (rs.next()) {
+				Boleta b = new Boleta();
+				b.setId_boleta(rs.getString("id_boleta"));
+				b.setId_cliente(rs.getString("id_cliente"));
+				b.setFecha_boleta(rs.getString("fecha_boleta"));
+				b.setTotal(rs.getDouble("total"));
+				listaBoletas.add(b);
+			}
+		} catch (Exception e) {
+			System.out.println("Error en listar Boletas: " + e.getMessage());
+		} finally {
+			MySQLConexion.closeConexion(con);
+		}
+		return listaBoletas;
+	}
 
 	@Override
 	public String obtenerMaximoBoleta() {
@@ -62,4 +90,5 @@ public class RBoleta implements IBoleta {
 		}
 		return ok;
 	}
+
 }
