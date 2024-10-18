@@ -1,0 +1,337 @@
+use mileniumdb;
+
+insert into Empleado values 
+("E0001", "Raul", "Mendez", "raulmendez", "123456"),
+("E0002", "Silvia", "Rodriguez", "silviarodriguez", "123456"),
+("E0003", "Rodrigo", "Jimenez", "rodrigojimenez", "123456"),
+("E0004", "Nicole", "Hurtado", "nicolehurtado", "123456"),
+("E0005", "Fabricio", "Linares", "fabriciolinares", "123456");
+
+INSERT INTO Categoria (nombre_categoria) VALUES ('Ficción');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Ciencia Ficción');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Fantasía');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Historia');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Biografía');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Autoayuda');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Misterio');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Poesía');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Romance');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Aventura');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Cuentos');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Psicología');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Ciencia');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Tecnología');
+INSERT INTO Categoria (nombre_categoria) VALUES ('Manga');
+
+INSERT INTO Autor (nombre_autor) VALUES ('Gabriel García Márquez');
+INSERT INTO Autor (nombre_autor) VALUES ('J.K. Rowling');
+INSERT INTO Autor (nombre_autor) VALUES ('George Orwell');
+INSERT INTO Autor (nombre_autor) VALUES ('Harper Lee');
+INSERT INTO Autor (nombre_autor) VALUES ('F. Scott Fitzgerald');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Cien años de soledad', 1, 'Una novela que narra la historia de la familia Buendía en el pueblo de Macondo.', 30.00, 50, 10),
+('Harry Potter y la piedra filosofal', 2, 'Un niño descubre que es un mago y asiste a una escuela de magia.', 25.00, 100, 25),
+('1984', 3, 'Una novela distópica sobre un futuro totalitario.', 20.00, 75, 50),
+('Matar a un ruiseñor', 4, 'Una reflexión sobre la injusticia racial en el sur de Estados Unidos.', 40.00, 30, 10),
+('El gran Gatsby', 5, 'La historia de Jay Gatsby y su obsesión por Daisy Buchanan en la década de 1920.', 35.00, 20, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(1, 1),  -- "Cien años de soledad" en "Ficción"
+(2, 1),  -- "Harry Potter y la piedra filosofal" en "Ficción"
+(3, 1),  -- "1984" en "Ficción"
+(4, 1),  -- "Matar a un ruiseñor" en "Ficción"
+(5, 1);  -- "El gran Gatsby" en "Ficción"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Isaac Asimov');
+INSERT INTO Autor (nombre_autor) VALUES ('Philip K. Dick');
+INSERT INTO Autor (nombre_autor) VALUES ('Arthur C. Clarke');
+INSERT INTO Autor (nombre_autor) VALUES ('H.G. Wells');
+INSERT INTO Autor (nombre_autor) VALUES ('Ray Bradbury');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Fundación', 6, 'Una historia épica que sigue a un grupo de científicos que intentan salvar la civilización galáctica.', 30.00, 40, 10),
+('¿Sueñan los androides con ovejas eléctricas?', 7, 'Una novela que explora la naturaleza de la humanidad en un futuro distópico.', 25.00, 30, 25),
+('2001: Una odisea del espacio', 8, 'Un viaje interplanetario que plantea preguntas sobre la inteligencia artificial y la evolución.', 40.00, 20, 50),
+('La guerra de los mundos', 9, 'La historia de una invasión marciana a la Tierra.', 20.00, 15, 10),
+('Fahrenheit 451', 10, 'Una novela que describe un futuro en el que los libros están prohibidos y los bomberos queman libros.', 35.00, 50, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(6, 2),  -- "Fundación" en "Ciencia Ficción"
+(7, 2),  -- "¿Sueñan los androides con ovejas eléctricas?" en "Ciencia Ficción"
+(8, 2),  -- "2001: Una odisea del espacio" en "Ciencia Ficción"
+(9, 2),  -- "La guerra de los mundos" en "Ciencia Ficción"
+(10, 2); -- "Fahrenheit 451" en "Ciencia Ficción"
+
+INSERT INTO Autor (nombre_autor) VALUES ('J.R.R. Tolkien');
+INSERT INTO Autor (nombre_autor) VALUES ('C.S. Lewis');
+INSERT INTO Autor (nombre_autor) VALUES ('Brandon Sanderson');
+INSERT INTO Autor (nombre_autor) VALUES ('Neil Gaiman');
+INSERT INTO Autor (nombre_autor) VALUES ('Ursula K. Le Guin');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('El Hobbit', 11, 'La aventura de Bilbo Bolsón para ayudar a un grupo de enanos a recuperar su hogar.', 30.00, 60, 10),
+('Las crónicas de Narnia: El león, la bruja y el armario', 12, 'Cuatro niños descubren un mundo mágico a través de un armario.', 25.00, 50, 25),
+('El archivo de las tormentas: El camino de los reyes', 13, 'La historia de varios personajes en un mundo devastado por tormentas mágicas.', 40.00, 40, 50),
+('American Gods', 14, 'Un hombre se convierte en el intermediario entre los antiguos dioses y los nuevos dioses de la sociedad moderna.', 20.00, 35, 10),
+('La mano izquierda de la oscuridad', 15, 'Un embajador en un planeta donde la gente puede cambiar de sexo explora la política y la cultura.', 35.00, 30, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(11, 3),  -- "El Hobbit" en "Fantasía"
+(12, 3),  -- "Las crónicas de Narnia: El león, la bruja y el armario" en "Fantasía"
+(13, 3),  -- "El archivo de las tormentas: El camino de los reyes" en "Fantasía"
+(14, 3),  -- "American Gods" en "Fantasía"
+(15, 3);  -- "La mano izquierda de la oscuridad" en "Fantasía"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Yuval Noah Harari');
+INSERT INTO Autor (nombre_autor) VALUES ('Jared Diamond');
+INSERT INTO Autor (nombre_autor) VALUES ('David McCullough');
+INSERT INTO Autor (nombre_autor) VALUES ('Doris Kearns Goodwin');
+INSERT INTO Autor (nombre_autor) VALUES ('Niall Ferguson');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Sapiens: De animales a dioses', 16, 'Una exploración de la historia de la humanidad desde sus inicios hasta el presente.', 30.00, 80, 10),
+('Armas, gérmenes y acero', 17, 'Una investigación sobre cómo las civilizaciones han sido influenciadas por factores ambientales.', 25.00, 70, 25),
+('1776', 18, 'Un relato de la Revolución Americana y sus líderes.', 20.00, 60, 50),
+('Equipo de rivales', 19, 'Una biografía de Abraham Lincoln y su relación con sus opositores.', 40.00, 50, 10),
+('La guerra del mundo', 20, 'Un análisis de los conflictos globales y sus consecuencias a lo largo de la historia.', 35.00, 40, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(16, 4),  -- "Sapiens: De animales a dioses" en "Historia"
+(17, 4),  -- "Armas, gérmenes y acero" en "Historia"
+(18, 4),  -- "1776" en "Historia"
+(19, 4),  -- "Equipo de rivales" en "Historia"
+(20, 4);  -- "La guerra del mundo" en "Historia"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Walter Isaacson');
+INSERT INTO Autor (nombre_autor) VALUES ('David Brooks');
+INSERT INTO Autor (nombre_autor) VALUES ('Barack Obama');
+INSERT INTO Autor (nombre_autor) VALUES ('Michelle Obama');
+INSERT INTO Autor (nombre_autor) VALUES ('Malala Yousafzai');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Steve Jobs', 21, 'Una biografía del cofundador de Apple, Steve Jobs.', 30.00, 50, 10),
+('The Road to Character', 22, 'Explora la vida de personajes históricos y cómo formaron su carácter.', 25.00, 40, 25),
+('A Promised Land', 23, 'La primera parte de la autobiografía del expresidente de EE. UU. Barack Obama.', 40.00, 60, 50),
+('Becoming', 24, 'Las memorias de la ex primera dama de EE. UU., Michelle Obama.', 20.00, 70, 10),
+('I Am Malala', 25, 'La historia de Malala Yousafzai, quien defendió el derecho a la educación.', 35.00, 30, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(21, 5),  -- "Steve Jobs" en "Biografía"
+(22, 5),  -- "The Road to Character" en "Biografía"
+(23, 5),  -- "A Promised Land" en "Biografía"
+(24, 5),  -- "Becoming" en "Biografía"
+(25, 5);  -- "I Am Malala" en "Biografía"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Dale Carnegie');
+INSERT INTO Autor (nombre_autor) VALUES ('Stephen R. Covey');
+INSERT INTO Autor (nombre_autor) VALUES ('Tony Robbins');
+INSERT INTO Autor (nombre_autor) VALUES ('Brené Brown');
+INSERT INTO Autor (nombre_autor) VALUES ('James Clear');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Cómo ganar amigos e influir sobre las personas', 26, 'Un clásico sobre habilidades interpersonales y comunicación.', 20.00, 70, 10),
+('Los 7 hábitos de la gente altamente efectiva', 27, 'Un enfoque basado en principios para resolver problemas personales y profesionales.', 30.00, 50, 25),
+('Despertando al gigante interior', 28, 'Un libro que ofrece herramientas para superar obstáculos y alcanzar tus sueños.', 35.00, 40, 50),
+('El poder de ser vulnerable', 29, 'Explora la importancia de la vulnerabilidad en nuestras vidas.', 25.00, 60, 10),
+('Hábitos atómicos', 30, 'Un guía práctica para construir buenos hábitos y romper los malos.', 40.00, 80, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(26, 6),  -- "Cómo ganar amigos e influir sobre las personas" en "Autoayuda"
+(27, 6),  -- "Los 7 hábitos de la gente altamente efectiva" en "Autoayuda"
+(28, 6),  -- "Despierta tu héroe interior" en "Autoayuda"
+(29, 6),  -- "El poder de la vulnerabilidad" en "Autoayuda"
+(30, 6);  -- "Hábitos atómicos" en "Autoayuda"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Agatha Christie');
+INSERT INTO Autor (nombre_autor) VALUES ('Arthur Conan Doyle');
+INSERT INTO Autor (nombre_autor) VALUES ('Gillian Flynn');
+INSERT INTO Autor (nombre_autor) VALUES ('Dan Brown');
+INSERT INTO Autor (nombre_autor) VALUES ('James Patterson');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Asesinato en el Orient Express', 31, 'Un viaje en tren se convierte en un misterio cuando ocurre un asesinato.', 30.00, 50, 10),
+('El sabueso de los Baskerville', 32, 'Sherlock Holmes investiga la leyenda de un perro fantasma en la mansión Baskerville.', 25.00, 40, 25),
+('Perdida', 33, 'Una esposa desaparece en el día de su aniversario, y las sospechas caen sobre su marido.', 40.00, 30, 50),
+('El código Da Vinci', 34, 'Un simbólogo y una criptóloga desentrañan un misterio relacionado con la obra de Da Vinci.', 35.00, 60, 10),
+('El primero en morir', 35, 'Una pareja de recién casados celebra su noche de bodas. No saben que será la última de sus vidas.', 70.00, 70, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(31, 7),  -- "Asesinato en el Orient Express" en "Misterio"
+(32, 7),  -- "El sabueso de los Baskerville" en "Misterio"
+(33, 7),  -- "Perdida" en "Misterio"
+(34, 7),  -- "El código Da Vinci" en "Misterio"
+(35, 7);  -- "Cazadores de sombras" en "Misterio"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Pablo Neruda');
+INSERT INTO Autor (nombre_autor) VALUES ('Gabriela Mistral');
+INSERT INTO Autor (nombre_autor) VALUES ('Octavio Paz');
+INSERT INTO Autor (nombre_autor) VALUES ('Maya Angelou');
+INSERT INTO Autor (nombre_autor) VALUES ('Walt Whitman');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Veinte poemas de amor y una canción desesperada', 36, 'Una colección de poemas sobre el amor y la pérdida.', 20.00, 50, 10),
+('Desolación', 37, 'Una obra que explora la tristeza y la belleza de la vida.', 25.00, 40, 25),
+('Piedra de sol', 38, 'Un poema extenso que examina el amor y el tiempo.', 30.00, 60, 50),
+('I Know Why the Caged Bird Sings', 39, 'Una autobiografía poética que narra la vida de la autora.', 35.00, 30, 10),
+('Hojas de hierba', 40, 'Una colección de poemas que celebra la vida y la naturaleza.', 40.00, 70, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(36, 8),  -- "Veinte poemas de amor y una canción desesperada" en "Poesía"
+(37, 8),  -- "Desolación" en "Poesía"
+(38, 8),  -- "Piedra de sol" en "Poesía"
+(39, 8),  -- "I Know Why the Caged Bird Sings" en "Poesía"
+(40, 8);  -- "Hojas de hierba" en "Poesía"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Jane Austen');
+INSERT INTO Autor (nombre_autor) VALUES ('Nicholas Sparks');
+INSERT INTO Autor (nombre_autor) VALUES ('Julia Quinn');
+INSERT INTO Autor (nombre_autor) VALUES ('E.L. James');
+INSERT INTO Autor (nombre_autor) VALUES ('Colleen Hoover');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Orgullo y prejuicio', 41, 'La historia de Elizabeth Bennet y su relación con el apuesto Mr. Darcy.', 30.00, 100, 10),
+('El diario de una pasión', 42, 'Un romance épico que trasciende el tiempo y las circunstancias.', 25.00, 80, 25),
+('Los Bridgerton: el vizconde que me amó', 43, 'La historia de amor entre Anthony Bridgerton y Kate Sheffield en la alta sociedad de Londres.', 35.00, 70, 50),
+('Cincuenta sombras de Grey', 44, 'La relación entre una estudiante y un joven empresario en un mundo de seducción y control.', 40.00, 60, 10),
+('Verity', 45, 'Un thriller romántico que explora secretos oscuros y el poder del amor.', 20.00, 90, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(41, 9),  -- "Orgullo y prejuicio" en "Romance"
+(42, 9),  -- "El diario de una pasión" en "Romance"
+(43, 9),  -- "Los Bridgerton: el vizconde que me amó" en "Romance"
+(44, 9),  -- "Cincuenta sombras de Grey" en "Romance"
+(45, 9);  -- "Verity" en "Romance"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Jules Verne');
+INSERT INTO Autor (nombre_autor) VALUES ('Mark Twain');
+INSERT INTO Autor (nombre_autor) VALUES ('Robert Louis Stevenson');
+INSERT INTO Autor (nombre_autor) VALUES ('Herman Melville');
+INSERT INTO Autor (nombre_autor) VALUES ('Jack London');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Veinte mil leguas de viaje submarino', 46, 'Un emocionante viaje a través de los océanos a bordo del Nautilus.', 30.00, 50, 10),
+('Las aventuras de Tom Sawyer', 47, 'Las travesuras y aventuras de un niño en el río Mississippi.', 25.00, 70, 25),
+('La isla del tesoro', 48, 'La búsqueda de un tesoro escondido en una isla desierta.', 40.00, 60, 50),
+('Moby Dick', 49, 'La obsesión de un capitán por cazar a la gran ballena blanca.', 35.00, 30, 10),
+('Colmillo blanco', 50, 'La historia de un lobo y su lucha por sobrevivir en la naturaleza.', 20.00, 90, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(46, 10),  -- "Veinte mil leguas de viaje submarino" en "Aventura"
+(47, 10),  -- "Las aventuras de Tom Sawyer" en "Aventura"
+(48, 10),  -- "La isla del tesoro" en "Aventura"
+(49, 10),  -- "Moby Dick" en "Aventura"
+(50, 10);  -- "Colmillo blanco" en "Aventura"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Hans Christian Andersen');
+INSERT INTO Autor (nombre_autor) VALUES ('Los Hermanos Grimm');
+INSERT INTO Autor (nombre_autor) VALUES ('Edgar Allan Poe');
+INSERT INTO Autor (nombre_autor) VALUES ('Jorge Luis Borges');
+INSERT INTO Autor (nombre_autor) VALUES ('Charles Perrault');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('El patito feo', 51, 'La historia de un patito que se convierte en un hermoso cisne.', 20.00, 100, 10),
+('Caperucita Roja', 52, 'La clásica historia de la niña que se encuentra con el lobo.', 25.00, 80, 25),
+('El cuervo', 53, 'Un poema narrativo sobre la pérdida y la locura.', 30.00, 60, 50),
+('Ficciones', 54, 'Una colección de cuentos fantásticos y filosóficos.', 40.00, 50, 10),
+('El Gato con Botas​', 55, 'El Gato con Botas​ es un cuento popular europeo recopilado, en 1695, por Charles Perrault.', 35.00, 70, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(51, 11),  -- "El patito feo" en "Cuentos"
+(52, 11),  -- "Caperucita Roja" en "Cuentos"
+(53, 11),  -- "El cuervo" en "Cuentos"
+(54, 11),  -- "Ficciones" en "Cuentos"
+(55, 11);  -- "Ternura" en "Cuentos"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Sigmund Freud');
+INSERT INTO Autor (nombre_autor) VALUES ('Carl Jung');
+INSERT INTO Autor (nombre_autor) VALUES ('Viktor Frankl');
+INSERT INTO Autor (nombre_autor) VALUES ('Daniel Kahneman');
+INSERT INTO Autor (nombre_autor) VALUES ('Steven Pinker');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('La interpretación de los sueños', 56, 'Un análisis profundo de los sueños y su significado.', 30.00, 50, 10),
+('El hombre y sus símbolos', 57, 'Un libro que explora el papel de los símbolos en la psique humana.', 25.00, 40, 25),
+('El hombre en busca de sentido', 58, 'Una reflexión sobre la búsqueda de sentido en la vida.', 35.00, 60, 50),
+('Pensar rápido, pensar despacio', 59, 'Un análisis de cómo pensamos y tomamos decisiones.', 40.00, 70, 10),
+('La tabla rasa', 60, 'La negación moderna de la naturaleza humana.', 20.00, 80, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(56, 12),  -- "La interpretación de los sueños" en "Psicología"
+(57, 12),  -- "El hombre y sus símbolos" en "Psicología"
+(58, 12),  -- "El hombre en busca de sentido" en "Psicología"
+(59, 12),  -- "Pensar rápido, pensar despacio" en "Psicología"
+(60, 12);  -- "El poder de la vulnerabilidad" en "Psicología"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Carl Sagan');
+INSERT INTO Autor (nombre_autor) VALUES ('Richard Dawkins');
+INSERT INTO Autor (nombre_autor) VALUES ('Stephen Hawking');
+INSERT INTO Autor (nombre_autor) VALUES ('Neil deGrasse Tyson');
+INSERT INTO Autor (nombre_autor) VALUES ('Charles Darwin');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('Cosmos', 61, 'Un viaje a través del universo y la historia de la ciencia.', 30.00, 50, 10),
+('El gen egoísta', 62, 'Una exploración de la evolución desde la perspectiva de los genes.', 25.00, 60, 25),
+('Una breve historia del tiempo', 63, 'Un libro que explica conceptos complejos de la cosmología.', 40.00, 40, 50),
+('Astrofísica para gente con prisa', 64, 'Un libro que explica la astrofísica de manera accesible para todos.', 20.00, 70, 10),
+('El origen de las especies', 65, 'En la década de 1850, Darwin escribió un libro controversial e influyente llamado El origen de las especies.', 35.00, 80, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(61, 13),  -- "Cosmos" en "Ciencia"
+(62, 13),  -- "El gen egoísta" en "Ciencia"
+(63, 13),  -- "Una breve historia del tiempo" en "Ciencia"
+(64, 13),  -- "Astrofísica para jóvenes con prisa" en "Ciencia"
+(65, 13);  -- "Guía del autoestopista galáctico" en "Ciencia"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Kevin Kelly');
+INSERT INTO Autor (nombre_autor) VALUES ('Sherry Turkle');
+INSERT INTO Autor (nombre_autor) VALUES ('Ashlee Vance');
+INSERT INTO Autor (nombre_autor) VALUES ('Max Tegmark');
+INSERT INTO Autor (nombre_autor) VALUES ('Jaron Lanier');
+
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES
+('What Technology Wants', 66, 'Explora la relación entre la tecnología y la evolución humana.', 30.00, 50, 10),
+('Alone Together', 67, 'Un análisis de cómo la tecnología afecta nuestras relaciones.', 25.00, 60, 25),
+('Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future', 68, 'Biografía de Elon Musk y su impacto en la tecnología.', 40.00, 70, 50),
+('Vida 3.0', 69, 'Vida 3.0 trata sobre la inteligencia artificial, su impacto en la vida terrestre y más.', 35.00, 40, 10),
+('You Are Not a Gadget', 70, 'Una reflexión sobre el impacto de la tecnología en la cultura.', 20.00, 80, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(66, 14),  -- "What Technology Wants" en "Tecnología"
+(67, 14),  -- "Alone Together" en "Tecnología"
+(68, 14),  -- "Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future" en "Tecnología"
+(69, 14),  -- "Steve Jobs" en "Tecnología"
+(70, 14);  -- "You Are Not a Gadget" en "Tecnología"
+
+INSERT INTO Autor (nombre_autor) VALUES ('Katsuhiro Otomo'),('Tatsuki Fujimoto'),('Kōhei Kadono'),('Junji Ito'),('Sui Ishida');
+INSERT INTO Libro (titulo, id_autor, sinopsis, precio, stock, descuento) VALUES 
+('AKIRA N.1', 71, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('AKIRA N.2', 71, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('AKIRA N.3', 71, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Chainsaw Man N.1', 72, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Chainsaw Man N.2', 72, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Chainsaw Man N.3', 72, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Boogiepop and Others', 73, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Uzumaki N.1', 74, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Uzumaki N.2', 74, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Uzumaki N.3', 74, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Tokyo Ghoul N.1', 75, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Tokyo Ghoul N.2', 75, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25),
+('Tokyo Ghoul N.3', 75, 'Manga es el término que se da a los cómics y novelas gráficas japonesas que contienen una secuencia narrativa.', 60, 10, 25);
+
+INSERT INTO Libro_Categoria (id_libro, id_categoria) VALUES
+(71, 15),
+(72, 15),
+(73, 15),
+(74, 15),
+(75, 15),
+(76, 15),
+(77, 15),
+(78, 15),
+(79, 15),
+(80, 15),
+(81, 15),
+(82, 15),
+(83, 15);
+
+INSERT INTO DESTACADO(id_libro) VALUES(1),(2),(3),(4),(5),(6),(7),(8);

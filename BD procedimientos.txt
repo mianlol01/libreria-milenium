@@ -1,0 +1,182 @@
+use mileniumdb;
+
+DELIMITER $$
+
+CREATE PROCEDURE ObtenerLibrosDestacados()
+BEGIN
+    SELECT 
+        l.*,
+        a.nombre_autor
+    FROM 
+        Destacado d
+    JOIN 
+        Libro l ON d.id_libro = l.id_libro
+    JOIN 
+        Autor a ON l.id_autor = a.id_autor;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE BuscarLibrosPorFrase(IN frase VARCHAR(255))
+BEGIN
+    SELECT DISTINCT
+        l.*,
+        a.nombre_autor
+    FROM
+        Libro l
+    JOIN 
+        Autor a ON l.id_autor = a.id_autor
+    WHERE
+        l.titulo LIKE CONCAT('%', frase, '%')
+        OR a.nombre_autor LIKE CONCAT('%', frase, '%');
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE ObtenerLibrosConAutor()
+BEGIN
+    SELECT 
+        l.*,
+        a.nombre_autor
+    FROM 
+        Libro l
+    JOIN 
+        Autor a ON l.id_autor = a.id_autor;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE BuscarLibrosSimilares(IN idLibro INT)
+BEGIN
+    SELECT DISTINCT
+        l.*,
+        a.nombre_autor
+    FROM
+        Libro l
+    JOIN
+        Autor a ON l.id_autor = a.id_autor
+    LEFT JOIN
+        Libro_Categoria lc ON l.id_libro = lc.id_libro
+    LEFT JOIN
+        Libro_Categoria lc2 ON lc.id_categoria = lc2.id_categoria
+    WHERE
+        (l.id_autor = (SELECT id_autor FROM Libro WHERE id_libro = idLibro)
+        OR lc2.id_libro = idLibro)
+        AND l.id_libro <> idLibro
+    LIMIT 4;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE ObtenerLibroPorId(IN idLibro INT)
+BEGIN
+    SELECT 
+        l.*,
+        a.nombre_autor
+    FROM 
+        Libro l
+    JOIN 
+        Autor a ON l.id_autor = a.id_autor
+    WHERE 
+        l.id_libro = idLibro;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE PROCEDURE ObtenerLibrosPorCategoria(IN idCategoria INT)
+BEGIN
+    SELECT 
+        l.*,
+        a.nombre_autor
+    FROM 
+        Libro l
+    JOIN 
+        Autor a ON l.id_autor = a.id_autor
+    JOIN
+        Libro_Categoria lc ON l.id_libro = lc.id_libro
+    WHERE 
+        lc.id_categoria = idCategoria;
+END$$
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE ValidarCliente (
+    IN p_username_cliente VARCHAR(50),
+    IN p_password_cliente VARCHAR(50)
+)
+BEGIN
+    SELECT *
+    FROM Cliente
+    WHERE username_cliente = p_username_cliente
+      AND password_cliente = p_password_cliente;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE ValidarEmpleado (
+    IN p_username_empleado VARCHAR(50),
+    IN p_password_empleado VARCHAR(50)
+)
+BEGIN
+    SELECT *
+    FROM Empleado
+    WHERE username_empleado = p_username_empleado
+      AND password_empleado = p_password_empleado;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE ObtenerAutoresConCantidadLibros()
+BEGIN
+    SELECT a.id_autor, a.nombre_autor, 
+           COUNT(l.id_libro) AS cantidad_libros
+    FROM Autor a
+    LEFT JOIN Libro l ON a.id_autor = l.id_autor
+    GROUP BY a.id_autor, a.nombre_autor;
+END //
+
+DELIMITER ;
+
+SELECT 
+    c.nombre_categoria AS Categoria,
+    COUNT(db.id_detalle_boleta) AS Cantidad_Vendida
+FROM 
+    Categoria c
+LEFT JOIN 
+    Libro_Categoria lc ON c.id_categoria = lc.id_categoria
+LEFT JOIN 
+    Libro l ON lc.id_libro = l.id_libro
+LEFT JOIN 
+    Detalle_Boleta db ON l.id_libro = db.id_libro
+GROUP BY 
+    c.id_categoria
+ORDER BY 
+    Cantidad_Vendida DESC;
+    
+SELECT l.titulo, SUM(db.cantidad) AS cantidad_vendida, SUM(db.importe) AS total_ingresos
+FROM Libro l
+JOIN Detalle_Boleta db ON l.id_libro = db.id_libro
+GROUP BY l.id_libro
+ORDER BY cantidad_vendida DESC;
+
+SELECT c.nombre_cliente, c.apellido_cliente, COUNT(b.id_boleta) AS num_compras, SUM(b.total) AS total_gastado
+FROM Cliente c
+JOIN Boleta b ON c.id_cliente = b.id_cliente
+GROUP BY c.id_cliente
+ORDER BY num_compras DESC;

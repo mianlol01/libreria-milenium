@@ -1,0 +1,70 @@
+drop database if exists mileniumdb;
+create database mileniumdb;
+use mileniumdb;
+create table Categoria (
+	id_categoria int auto_increment primary key,
+    nombre_categoria varchar(100)
+);
+create table Autor (
+	id_autor int auto_increment primary key,
+    nombre_autor varchar(100) unique
+);
+create table Libro (
+    id_libro INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(150),
+    id_autor INT,
+    sinopsis TEXT, 
+    fecha_registro DATE DEFAULT (CURDATE()),
+    precio DECIMAL(10,2),
+    stock INT,
+    descuento INT,
+    FOREIGN KEY (id_autor) REFERENCES Autor(id_autor)
+);
+create table Libro_Categoria (
+	id_libro INT,
+    id_categoria INT,
+    PRIMARY KEY (id_libro, id_categoria),
+    FOREIGN KEY (id_libro) REFERENCES Libro(id_libro) ON DELETE CASCADE,
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria) ON DELETE CASCADE
+);
+create table Destacado (
+	id_destacado int auto_increment primary key,
+	id_libro int,
+    FOREIGN KEY (id_libro) REFERENCES Libro(id_libro)
+);
+create table Cliente (
+	id_cliente varchar(5) primary key,
+	nombre_cliente varchar(50) not null,
+	apellido_cliente varchar(50) not null,
+	correo_cliente varchar(100) unique not null,
+	username_cliente varchar(50) unique not null,
+	password_cliente varchar(50) not null
+);
+create table Boleta (
+	id_boleta varchar(5) primary key,
+	id_cliente varchar(5),
+	total decimal(10,2),
+	fecha_boleta DATETIME DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
+);
+create table Detalle_Boleta (
+	id_detalle_boleta int auto_increment primary key,
+	id_boleta varchar(5) not null,
+	id_libro int not null,
+    titulo varchar(100) not null,
+    precio_unitario decimal (10,2) not null,
+    descuento_unidad decimal (10,2) not null,
+    cantidad int not null,
+    precio_total decimal (10,2) not null,
+    descuento_total decimal (10,2) not null,
+	importe decimal (10,2) not null,
+    FOREIGN KEY (id_boleta) REFERENCES Boleta(id_boleta),
+    FOREIGN KEY (id_libro) REFERENCES Libro(id_libro)
+);
+create table Empleado (
+	id_empleado varchar(5) primary key,
+	nombre_empleado varchar(100) not null,
+	apellido_empleado varchar(100) not null,
+	username_empleado varchar(100) unique not null,
+	password_empleado varchar(100) not null
+);
